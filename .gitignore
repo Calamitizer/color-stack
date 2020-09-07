@@ -1,0 +1,10 @@
+**/node_modules/
+**/dist/
+# **/.awcache
+**/yarn-error.log
+
+*.env
+!example.env
+
+# server/logs/*
+# !server/logs/.blank

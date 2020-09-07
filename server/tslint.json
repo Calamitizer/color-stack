@@ -1,0 +1,8 @@
+{
+  "extends": ["../tslint.json"],
+  "rules": {
+    // these come from nestjs and its decorators
+    "prefer-function-over-method": false,
+    "no-empty": false
+  }
+}
