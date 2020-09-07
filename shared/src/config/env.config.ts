@@ -6,7 +6,7 @@ const loadEnv = () => {
     path: DirectoryConfig.ENV_PATH,
   });
 
-  if (error !== undefined) {
+  if (error) {
     throw error;
   }
 

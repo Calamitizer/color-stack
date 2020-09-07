@@ -1,4 +1,4 @@
-import * as path from 'path';
+import path from 'path';
 import appRootPath from 'app-root-path';
 
 const root = appRootPath.toString();
