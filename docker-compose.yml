@@ -1,16 +1,17 @@
 # https://docs.docker.com/compose
-
-version: '3'
+version: '3.8'
 services:
   # webapp:
   #   build: .
   #   depends_on:
   #     - db
 
-  db:
-    image: mongo:latest
+  mongodb:
+    image: mongo:4.4
     restart: always
     env_file: .env
+    # volumes:
+    #   - ./data-volume:/data/db
     environment:
       MONGO_INITDB_ROOT_USERNAME: ${DB_USER?}
       MONGO_INITDB_ROOT_PASSWORD: ${DB_PASSWORD?}

@@ -21,6 +21,7 @@
     "cross-env": "^7.0.2",
     "helmet": "^4.1.0",
     "mongoose": "^5.10.3",
+    "nestjs-command": "^1.5.0",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^6.6.3",
     "ts-node": "^9.0.0"

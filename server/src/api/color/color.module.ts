@@ -1,17 +1,16 @@
 import { Module } from '@nestjs/common';
+import ColorController from '@server/api/color/color.controller';
+import ColorService from '@server/api/color/color.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Person, PersonSchema } from '@server/api/person/person.schema';
-import PersonController from '@server/api/person/person.controller';
-import PersonService from '@server/api/person/person.service';
 
 @Module({
   imports: [
     MongooseModule.forFeature([{ name: Person.name, schema: PersonSchema }]),
   ],
-  controllers: [PersonController],
-  providers: [PersonService],
-  exports: [PersonService],
+  controllers: [ColorController],
+  providers: [ColorService],
 })
-class PersonModule {}
+class ColorModule {}
 
-export default PersonModule;
+export default ColorModule;

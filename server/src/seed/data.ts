@@ -1,0 +1,17 @@
+const data: any = {
+  Group1: {
+    John: 'Blue',
+    Peter: 'Green',
+  },
+  Group2: {
+    Jane: 'Red',
+    May: 'Green',
+  },
+  Group3: {
+    Howard: 'Blue',
+    Nguyen: 'Red',
+    Lim: 'Green',
+  },
+};
+
+export default data;

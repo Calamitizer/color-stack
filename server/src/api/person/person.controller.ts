@@ -11,12 +11,12 @@ class PersonController {
 
   @Get()
   async get(
-    @Query(QParam.ID) id: QProps[QParam.ID],
+    // @Query(QParam.ID) id: QProps[QParam.ID],
     @Query(QParam.NAME) name: QProps[QParam.NAME],
     @Query(QParam.COLOR) color: QProps[QParam.COLOR]
   ) {
     return this.service.get({
-      id,
+      // id,
       name,
       color,
     });
