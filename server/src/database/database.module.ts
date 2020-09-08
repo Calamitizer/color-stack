@@ -1,9 +1,9 @@
-import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
+import URI from '@server/database/uri';
 
-@Module({
-  imports: [MongooseModule.forRoot('mongodb://localhost/nest')],
-})
-class DatabaseModule {}
+const DatabaseModule = MongooseModule.forRoot(URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 export default DatabaseModule;
