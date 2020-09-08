@@ -1,11 +1,11 @@
 import { Module } from '@nestjs/common';
-// import AssetController from '@server/routing/asset.controller';
-// import RedirectController from '@server/routing/redirect.controller';
-// import RedirectInterceptor from '@server/routing/redirect.interceptor';
+import StaticModule from '@server/routing/static.module';
+import IndexController from '@server/routing/index.controller';
+import FallbackController from '@server/routing/fallback.controller';
 
 @Module({
-  // controllers: [AssetController, RedirectController],
-  // providers: [RedirectInterceptor],
+  imports: [StaticModule],
+  controllers: [IndexController, FallbackController],
 })
 class RoutingModule {}
 

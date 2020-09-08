@@ -3,7 +3,7 @@ class RouteConfig {
 
   static readonly INDEX_URI = '/';
   static readonly API_ROOT = 'api';
-  static readonly STATIC_FOLDER = 'assets';
+  static readonly ASSET_ROOT = '/assets';
 }
 
 export default RouteConfig;

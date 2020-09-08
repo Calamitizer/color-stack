@@ -1,0 +1,14 @@
+{
+  "extends": "../tsconfig",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "jsx": "react",
+    "lib": ["dom", "dom.iterable", "es6", "es2016.array.include"],
+    "paths": {
+      "@client/*": ["client/src/*"],
+      "@shared/*": ["shared/src/*"]
+    }
+  },
+  "include": ["./src/**/*", "./webpack.config.ts"],
+  "exclude": ["node_modules"]
+}
