@@ -26,11 +26,11 @@ const getDispatchProps = (dispatch: Dispatch): DispatchProps => {
   const handler = PersonHandler.create(dispatch);
 
   return {
-    setValue: (value) => {
+    setValue: async (value) => {
       const color = value === '' ? null : value;
 
+      await handler.getForFilter({ color });
       dispatch(filterActions[FilterActionType.SET_COLOR](color));
-      handler.getForFilter({ color });
     },
   };
 };

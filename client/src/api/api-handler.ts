@@ -14,6 +14,9 @@ abstract class ApiHandler<T = any> {
       .catch(this.onFailure);
   };
 
+  protected basePost = async <U = any>(uri: string, body: U) =>
+    axios.post(uri, body);
+
   private onRequest = () => {
     const { onRequest } = this.hooks;
 

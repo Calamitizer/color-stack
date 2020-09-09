@@ -1,4 +1,5 @@
 import { Dispatch } from 'redux';
+import Person from '@shared/model/person';
 import endpoint from '@shared/api/person/person.endpoint';
 import { QProps } from '@shared/api/person/person.qprops';
 import PersonResult from '@shared/api/person/person.result';
@@ -35,6 +36,8 @@ class PersonHandler extends ApiHandler<PersonResult> {
 
   private getByQProps = async (qProps: QProps) =>
     this.baseGet(endpoint.getByQueryString(qProps));
+
+  upsert = async (props: Person) => this.basePost(endpoint.getAll(true), props);
 }
 
 export default PersonHandler;

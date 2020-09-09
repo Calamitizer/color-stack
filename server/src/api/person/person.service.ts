@@ -5,10 +5,15 @@ import { QProps } from '@shared/api/person/person.qprops';
 import PersonResult from '@shared/api/person/person.result';
 import { PersonDoc } from '@server/api/person/person.schema';
 import PersonDto from '@server/api/person/person.dto';
+import Person from '@shared/model/person';
+import GroupService from '@server/api/group/group.service';
 
 @Injectable()
 class PersonService {
-  constructor(@InjectModel(PersonDoc.name) private model: Model<PersonDoc>) {}
+  constructor(
+    @InjectModel(PersonDoc.name) private model: Model<PersonDoc>,
+    private groupService: GroupService
+  ) {}
 
   get = async ({ name, color }: QProps): Promise<PersonResult> => {
     const requestTime = Date.now();
@@ -28,14 +33,16 @@ class PersonService {
 
   create = async (props: PersonDto) => {
     const created = new this.model(props);
+
     return created.save();
   };
 
-  upsert = async ({ name, color, group }: PersonDto) => {
-    const { n, nModified } = await this.model
-      .updateOne({ name }, { color, group }, { upsert: true })
+  upsert = async ({ name, color, group: groupName }: Person) => {
+    const group = await this.groupService.upsert({ name: groupName });
+
+    return this.model
+      .findOneAndUpdate({ name }, { color, group }, { upsert: true, new: true })
       .exec();
-    console.log(`${n} matched, ${nModified} modified}`);
   };
 }
 

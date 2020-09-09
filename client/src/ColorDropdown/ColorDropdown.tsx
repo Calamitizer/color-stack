@@ -5,7 +5,22 @@ import {
   Select,
   SelectProps,
   MenuItem,
+  makeStyles,
+  createStyles,
 } from '@material-ui/core';
+
+const useStyles = makeStyles(({ shape }) =>
+  createStyles({
+    inputRoot: {
+      color: 'white',
+    },
+
+    formControl: {
+      borderRadius: shape.borderRadius,
+      minWidth: 120,
+    },
+  })
+);
 
 type Color = string;
 interface Props {
@@ -17,6 +32,8 @@ interface Props {
 
 const FIELD_ID = 'select-color';
 const ColorDropdown: React.FC<Props> = ({ options, value, setValue }) => {
+  const classes = useStyles();
+
   const createMenuItem = (color: Color, index: number) => (
     <MenuItem value={color} key={index}>
       {color}
@@ -28,8 +45,14 @@ const ColorDropdown: React.FC<Props> = ({ options, value, setValue }) => {
   };
 
   return (
-    <FormControl variant="outlined">
-      <InputLabel id={`${FIELD_ID}-label`}>Color</InputLabel>
+    <FormControl variant="filled" className={classes.formControl}>
+      <InputLabel
+        id={`${FIELD_ID}-label`}
+        color="secondary"
+        className={classes.inputRoot}
+      >
+        Color
+      </InputLabel>
       <Select
         labelId={`${FIELD_ID}-label`}
         id={FIELD_ID}

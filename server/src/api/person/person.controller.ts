@@ -1,4 +1,5 @@
-import { Controller, Query, Get } from '@nestjs/common';
+import { Controller, Query, Get, Post, Body } from '@nestjs/common';
+import Person from '@shared/model/person';
 import endpoint from '@shared/api/person/person.endpoint';
 import PersonService from '@server/api/person/person.service';
 import { QParam, QProps } from '@shared/api/person/person.qprops';
@@ -18,6 +19,11 @@ class PersonController {
       name,
       color,
     });
+  }
+
+  @Post()
+  async upsert(@Body() props: Person) {
+    return this.service.upsert(props);
   }
 }
 
