@@ -1,16 +1,34 @@
 import React from 'react';
-// import { Button } from '@material-ui/core';
+import ReactJson from 'react-json-view';
+import { makeStyles, createStyles, Paper } from '@material-ui/core';
 
 interface Props {
   data: any;
-  // setData: () => void;
 }
 
-const JsonView: React.FC<Props> = ({ data }) => (
-  <div>
-    {/* <Button onClick={setData}>Click!</Button> */}
-    <pre>{JSON.stringify(data, null, 2)}</pre>
-  </div>
+const useStyles = makeStyles(({ spacing }) =>
+  createStyles({
+    viewer: {
+      width: '40%',
+      height: '80%',
+      margin: spacing(8),
+    },
+  })
 );
+
+const JsonView: React.FC<Props> = ({ data }) => {
+  const classes = useStyles();
+
+  return (
+    <Paper className={classes.viewer}>
+      <ReactJson
+        src={data}
+        name={false}
+        theme="monokai"
+        displayDataTypes={false}
+      />
+    </Paper>
+  );
+};
 
 export default JsonView;
