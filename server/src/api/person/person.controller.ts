@@ -1,9 +1,7 @@
 import { Controller, Query, Get } from '@nestjs/common';
-import personEndpoint from '@shared/api/person/person.endpoint';
+import endpoint from '@shared/api/person/person.endpoint';
 import PersonService from '@server/api/person/person.service';
 import { QParam, QProps } from '@shared/api/person/person.qprops';
-
-const endpoint = personEndpoint;
 
 @Controller(endpoint.baseUri)
 class PersonController {

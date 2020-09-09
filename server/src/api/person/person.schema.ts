@@ -1,9 +1,16 @@
 import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
+import Person from '@shared/model/person';
 import { GroupSchema, Group } from '@server/api/group/group.schema';
 
 @Schema()
-export class Person extends Document {
+export class PersonDoc extends Document {
+  static process = ({ name, color, group }: PersonDoc): Person => ({
+    name,
+    color,
+    group: group.name,
+  });
+
   @Prop({
     type: String,
     required: true,
@@ -23,9 +30,9 @@ export class Person extends Document {
   @Prop({
     type: GroupSchema,
     required: true,
-    select: false,
+    // select: false,
   })
   group!: Group;
 }
 
-export const PersonSchema = SchemaFactory.createForClass(Person);
+export const PersonSchema = SchemaFactory.createForClass(PersonDoc);

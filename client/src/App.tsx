@@ -2,7 +2,8 @@ import React from 'react';
 import { Provider as ReduxStoreProvider } from 'react-redux';
 import { Theme, MuiThemeProvider, CssBaseline } from '@material-ui/core';
 import { CsStore } from '@client/redux/types';
-// import MtmContent from '@client/MtmContentContainer';
+import InitialDataFetcher from '@client/DataFetcher/InitialDataFetcher';
+import CsContent from '@client/CsContent';
 
 interface Props {
   store: CsStore;
@@ -14,8 +15,8 @@ const App: React.FC<Props> = ({ store, theme }) => (
     <MuiThemeProvider {...{ theme }}>
       <CssBaseline />
 
-      {/* <MtmContent /> */}
-      <span>Wow!</span>
+      <InitialDataFetcher />
+      <CsContent />
     </MuiThemeProvider>
   </ReduxStoreProvider>
 );

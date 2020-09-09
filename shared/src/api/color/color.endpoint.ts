@@ -6,6 +6,8 @@ class ColorEndpoint extends ApiEndpoint {
   constructor() {
     super(ColorEndpoint.SINGULAR);
   }
+
+  getAllUri = () => this.baseUri;
 }
 
 const colorEndpoint = new ColorEndpoint();
