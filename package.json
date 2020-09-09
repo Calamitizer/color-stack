@@ -13,7 +13,8 @@
     "shared": "yarn workspace @cs/shared",
     "server": "yarn workspace @cs/server",
     "client": "yarn workspace @cs/client",
-    "seed": "yarn server nestjs-command seed"
+    "seed": "yarn server nestjs-command seed",
+    "deploy": "yarn seed && yarn client bundle:d && yarn server start:d"
   },
   "dependencies": {
     "tsconfig-paths": "^3.9.0",
